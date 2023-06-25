@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CardSense</string>
+    <string name="add_card_text">TextView</string>
 </resources>
