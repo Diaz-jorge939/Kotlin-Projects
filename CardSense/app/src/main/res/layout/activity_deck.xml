@@ -16,22 +16,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/toolbar_arrow"
+            android:id="@+id/deck_arrow_imageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_arrow_back_24"
             android:layout_gravity="start" />
 
         <TextView
-            android:id="@+id/toolbar_header"
+            android:id="@+id/deck_toolbar_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Flashcard1"
+            android:text="@string/deck_name"
             android:layout_gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
 
         <ImageView
-            android:id="@+id/toolbar_check"
+            android:id="@+id/deck_check_imageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_more_vert_24"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@id/deck_toolbar" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/deck_button"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="Flip"
