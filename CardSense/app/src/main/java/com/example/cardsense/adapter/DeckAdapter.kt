@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardsense.R
+import com.example.cardsense.data.Deck
 import org.w3c.dom.Text
 
-class DeckAdapter:  RecyclerView.Adapter<DeckAdapter.DeckViewHolder>(){
-    // private val dataset: List<Deck>
+class DeckAdapter(private val dataset: List<Deck>):  RecyclerView.Adapter<DeckAdapter.DeckViewHolder>(){
+
     class DeckViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
         // deck name
         val title: TextView = view.findViewById(R.id.deck_title)
@@ -29,15 +30,14 @@ class DeckAdapter:  RecyclerView.Adapter<DeckAdapter.DeckViewHolder>(){
      * Replace the contents of a view (invoked by the layout manager)
      */
     override fun onBindViewHolder(holder: DeckViewHolder, position: Int) {
-//        val item = dataset[position]
-//        holder.textView.text = context.resources.getString(item.stringResourceId)
-//        holder.imageView.setImageResource(item.imageResourceId)
+        val item = dataset[position]
+        holder.title.text = item.getDeckName()
+        holder.card_num.text = item.getCardCount().toString()
     }
     /**
      * Return the size of your dataset (invoked by the layout manager)
      */
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-        //return dataset.size
+        return dataset.size
     }
 }
