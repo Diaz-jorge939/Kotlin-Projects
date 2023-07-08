@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@id/add_card_toolbar">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/deck_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Deck: Flashcard1"
@@ -68,7 +68,7 @@
             android:textSize="22sp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/front_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Front"
@@ -76,12 +76,13 @@
             android:textSize="22sp"/>
 
         <EditText
+            android:id="@+id/front_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="front of card text" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/back_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Back"
@@ -89,6 +90,7 @@
             android:textSize="22sp" />
 
         <EditText
+            android:id="@+id/back_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="6dp"
