@@ -3,9 +3,7 @@ package com.example.cardsense.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardsense.R
 import com.example.cardsense.data.Deck
@@ -15,7 +13,7 @@ class DeckAdapter(
 
     ) : RecyclerView.Adapter<DeckAdapter.DeckViewHolder>(){
 
-//    private var onClickListener: OnClickListener? = null
+ //   private var onClickListener: OnClickListener? = null
     var onItemClick : ((Deck) -> Unit)? = null
 
     class DeckViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
@@ -44,14 +42,16 @@ class DeckAdapter(
         holder.title.text = item.getDeckName()
         holder.card_num.text = item.getCardCount().toString()
 
+
+        holder.itemView.setOnClickListener{
+            onItemClick?.invoke(item)
+        }
 //        holder.itemView.setOnClickListener {
 //            if (onClickListener != null) {
 //                onClickListener!!.onClick(position, item)
 //            }
 //        }
-        holder.itemView.setOnClickListener{
-            onItemClick?.invoke(item)
-        }
+
     }
 
     /**

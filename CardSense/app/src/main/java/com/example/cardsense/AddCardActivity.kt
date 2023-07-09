@@ -17,7 +17,5 @@ class AddCardActivity : AppCompatActivity() {
         //this specifies the root of the hierarchy of views in your app, binding.root.
         setContentView(binding.root)
 
-
-
     }
 }

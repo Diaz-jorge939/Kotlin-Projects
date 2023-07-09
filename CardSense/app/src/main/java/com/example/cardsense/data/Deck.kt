@@ -1,9 +1,13 @@
 package com.example.cardsense.data
+import java.io.Serializable
 
-class Deck(private val name: String) {
+class Deck(private var name: String) : Serializable{
     private var card_count = 0
     private val deck: MutableList<Flashcard> = mutableListOf()
 
+    fun setDeckName(name: String){
+        this.name = name
+    }
     fun getCardCount(): Int {
         return this.card_count
     }
@@ -19,6 +23,7 @@ class Deck(private val name: String) {
     }
     fun removeCard(position: Int){
         deck.removeAt(position)
+        this.card_count--
     }
 
 }
