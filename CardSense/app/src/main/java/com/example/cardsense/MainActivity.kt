@@ -3,14 +3,12 @@ package com.example.cardsense
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cardsense.adapter.DeckAdapter
 import com.example.cardsense.data.Deck
+import com.example.cardsense.data.Card
 import com.example.cardsense.databinding.ActivityMainBinding
-import java.io.Serializable
 
 class MainActivity : AppCompatActivity(){
     //This line declares a top-level variable in the class for the binding object.
@@ -35,16 +33,17 @@ class MainActivity : AppCompatActivity(){
 
         binding.mainFab.setOnClickListener {
 
-            dataset.add(Deck("Flashcard ${count++}"))
+            dataset.add(Deck("Flashcard $count"))
+            dataset[count].addCard(Card("Question $count", "Answer $count"))
+            count++
             adapter.notifyItemInserted(dataset.size-1)
-            Log.d(TAG, "onClick: works")
+//            Log.d(TAG, "onClick: works")
         }
 
         adapter.onItemClick = {
-            Intent(this, FlashcardActivity::class.java).also{
-                it.putExtra("DECK_DATA",it)
-            }
-//            Toast.makeText(this, "${it.getDeckName()}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, CardActivity::class.java)
+            startActivity(intent)
+
         }
     }
 

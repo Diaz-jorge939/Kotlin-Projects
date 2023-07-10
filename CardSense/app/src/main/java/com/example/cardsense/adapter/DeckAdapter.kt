@@ -8,12 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cardsense.R
 import com.example.cardsense.data.Deck
 
-class DeckAdapter(
-    private var dataset: List<Deck>
+class DeckAdapter(private var dataset: List<Deck>) : RecyclerView.Adapter<DeckAdapter.DeckViewHolder>(){
 
-    ) : RecyclerView.Adapter<DeckAdapter.DeckViewHolder>(){
-
- //   private var onClickListener: OnClickListener? = null
     var onItemClick : ((Deck) -> Unit)? = null
 
     class DeckViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
@@ -42,15 +38,9 @@ class DeckAdapter(
         holder.title.text = item.getDeckName()
         holder.card_num.text = item.getCardCount().toString()
 
-
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(item)
         }
-//        holder.itemView.setOnClickListener {
-//            if (onClickListener != null) {
-//                onClickListener!!.onClick(position, item)
-//            }
-//        }
 
     }
 
@@ -60,15 +50,5 @@ class DeckAdapter(
     override fun getItemCount(): Int {
         return dataset.size
     }
-//
-//    // A function to bind the onclickListener.
-//    fun setOnClickListener(onClickListener: OnClickListener) {
-//        this.onClickListener = onClickListener
-//    }
-//
-//    // onClickListener Interface
-//    interface OnClickListener {
-//        fun onClick(position: Int, deck: Deck)
-//    }
 
 }
