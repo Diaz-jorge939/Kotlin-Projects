@@ -1,23 +1,36 @@
 package com.example.cardsense.adapter
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.View.OnCreateContextMenuListener
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardsense.R
-import com.example.cardsense.data.Deck
+import com.example.cardsense.Model.Deck
 
 class DeckAdapter(private var dataset: List<Deck>) : RecyclerView.Adapter<DeckAdapter.DeckViewHolder>(){
 
     var onItemClick : ((Deck) -> Unit)? = null
 
-    class DeckViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
+    class DeckViewHolder(private val view: View) : RecyclerView.ViewHolder(view), OnCreateContextMenuListener{
         // deck name
         val title: TextView = view.findViewById(R.id.deck_title)
 
         // number of cards in deck
         val card_num: TextView = view.findViewById(R.id.deck_card_count)
+
+        val menu_popup: LinearLayout = view.findViewById(R.id.deck_item)
+
+        override fun onCreateContextMenu(
+            menu: ContextMenu?,
+            v: View?,
+            menuInfo: ContextMenu.ContextMenuInfo?
+        ) {
+
+            menu?.add(adapterPosition,101,0,"Add Card")
+            menu?.add(adapterPosition,102,1,"Add Deck")
+            menu?.add(adapterPosition,103,3,"Edit Deck Name")
+        }
 
     }
 
@@ -37,11 +50,10 @@ class DeckAdapter(private var dataset: List<Deck>) : RecyclerView.Adapter<DeckAd
         val item = dataset[position]
         holder.title.text = item.getDeckName()
         holder.card_num.text = item.getCardCount().toString()
-
+        holder.menu_popup.setOnCreateContextMenuListener(holder)
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(item)
         }
-
     }
 
     /**
@@ -50,5 +62,4 @@ class DeckAdapter(private var dataset: List<Deck>) : RecyclerView.Adapter<DeckAd
     override fun getItemCount(): Int {
         return dataset.size
     }
-
 }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cardsense.R
-import com.example.cardsense.data.Card
+import com.example.cardsense.Model.Card
 
 class CardAdapter(private var flashcards: List<Card>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
@@ -18,7 +18,6 @@ class CardAdapter(private var flashcards: List<Card>) : RecyclerView.Adapter<Car
 
     class CardViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
         val textview: TextView = view.findViewById(R.id.card_question)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
@@ -31,7 +30,7 @@ class CardAdapter(private var flashcards: List<Card>) : RecyclerView.Adapter<Car
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val item = flashcards[position]
-        //holder.textview.text = item.getFront()
+        holder.textview.text = item.getFront()
 
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(item)
