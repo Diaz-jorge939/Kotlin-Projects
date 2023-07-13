@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CardSense</string>
+    <string name="add_card_text">TextView</string>
+    <string name="deck_name">Flashcard1</string>
+    <string name="card_count">10</string>
+    <string name="deck_title">Flashcard1</string>
+</resources>
