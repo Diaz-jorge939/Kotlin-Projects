@@ -20,9 +20,12 @@ class AddCardActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.addcardButton.setOnClickListener {
+
+            val deck_position = intent.getIntExtra("DECK_POSITION", 0)
             val intent = Intent(this@AddCardActivity,MainActivity::class.java)
             intent.putExtra("QUESTION",binding.frontId.text.toString())
             intent.putExtra("ANSWER", binding.backId.text.toString())
+            intent.putExtra("DECK_POSITION",deck_position)
 
             setResult(Activity.RESULT_OK, intent)
             finish()

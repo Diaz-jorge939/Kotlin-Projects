@@ -2,6 +2,9 @@ package com.example.cardsense
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.GridLayout
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cardsense.adapter.CardAdapter
 import com.example.cardsense.Model.Card
@@ -25,22 +28,15 @@ class CardActivity : AppCompatActivity() {
         val deckReceived = intent.getStringExtra("DECK_CLICKED")
         val deck = Gson().fromJson(deckReceived, Deck::class.java)
 
-        //flashcards = deck.getDeck()
-        adapter = CardAdapter(deck.getDeck())
+        flashcards = deck.getDeck()
+        adapter = CardAdapter(flashcards)
 
         binding.flashcardRecyclerview.layoutManager = LinearLayoutManager(this)
         binding.flashcardRecyclerview.adapter = adapter
 
         adapter.onItemClick = {
-//           Toast.makeText(this, "${it.getFront()}", Toast.LENGTH_SHORT).show()
-        }
-        binding.cardCardview.setOnClickListener{
-//            deck.addCard(Card("Question", "Answer"))
-//            deck.display()
-//            adapter.notifyItemInserted(deck.getSize()-1)
-        }
 
-
+        }
     }
 
 }

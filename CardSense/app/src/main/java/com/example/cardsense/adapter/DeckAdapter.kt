@@ -2,6 +2,7 @@ package com.example.cardsense.adapter
 
 import android.view.*
 import android.view.View.OnCreateContextMenuListener
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,8 @@ class DeckAdapter(private var dataset: List<Deck>) : RecyclerView.Adapter<DeckAd
         // number of cards in deck
         val card_num: TextView = view.findViewById(R.id.deck_card_count)
 
-        val menu_popup: LinearLayout = view.findViewById(R.id.deck_item)
+        // float context menu for item in recycler view
+        val popup_options: ImageView = view.findViewById(R.id.menu_options)
 
         override fun onCreateContextMenu(
             menu: ContextMenu?,
@@ -29,9 +31,8 @@ class DeckAdapter(private var dataset: List<Deck>) : RecyclerView.Adapter<DeckAd
 
             menu?.add(adapterPosition,101,0,"Add Card")
             menu?.add(adapterPosition,102,1,"Add Deck")
-            menu?.add(adapterPosition,103,3,"Edit Deck Name")
+            menu?.add(adapterPosition,103,2,"Edit Deck Name")
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeckViewHolder {
@@ -50,8 +51,10 @@ class DeckAdapter(private var dataset: List<Deck>) : RecyclerView.Adapter<DeckAd
         val item = dataset[position]
         holder.title.text = item.getDeckName()
         holder.card_num.text = item.getCardCount().toString()
-        holder.menu_popup.setOnCreateContextMenuListener(holder)
-        holder.itemView.setOnClickListener{
+
+        holder.popup_options.setOnCreateContextMenuListener(holder)
+
+        holder.title.setOnClickListener{
             onItemClick?.invoke(item)
         }
     }
@@ -62,4 +65,6 @@ class DeckAdapter(private var dataset: List<Deck>) : RecyclerView.Adapter<DeckAd
     override fun getItemCount(): Int {
         return dataset.size
     }
+
+
 }
