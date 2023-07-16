@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.cardsense.databinding.ActivityAddcardBinding
-import com.example.cardsense.databinding.ActivityDeckBinding
+
 
 class AddCardActivity : AppCompatActivity() {
 

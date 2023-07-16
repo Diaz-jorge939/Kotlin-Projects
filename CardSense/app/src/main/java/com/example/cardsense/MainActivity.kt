@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(){
     // It's defined at this level because it will be used across multiple methods in MainActivity class.
     private lateinit var binding: ActivityMainBinding
 
-    val dataset = mutableListOf<Deck>()
+    var dataset : MutableList<Deck> = mutableListOf()
     val adapter = DeckAdapter(dataset)
 
     val getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity(){
             // flashcard mode
 //            dataset.add(Deck("Deck ${dataset.size}"))
 //            adapter.notifyItemInserted(dataset.size-1)
-            Toast.makeText(this@MainActivity, "For Future Functionality", Toast.LENGTH_SHORT).show()
         }
 
         adapter.onItemClick = {

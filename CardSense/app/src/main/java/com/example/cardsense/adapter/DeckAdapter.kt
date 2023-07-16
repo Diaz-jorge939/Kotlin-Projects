@@ -67,4 +67,9 @@ class DeckAdapter(private var dataset: List<Deck>) : RecyclerView.Adapter<DeckAd
     }
 
 
+    fun shuffle(){
+        dataset = dataset.shuffled()
+        notifyDataSetChanged()
+    }
+
 }

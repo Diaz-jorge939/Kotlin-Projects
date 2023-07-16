@@ -1,7 +1,9 @@
 package com.example.cardsense.adapter
 
+import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnCreateContextMenuListener
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -39,5 +41,10 @@ class CardAdapter(private var flashcards: List<Card>) : RecyclerView.Adapter<Car
 
     override fun getItemCount(): Int {
         return flashcards.size
+    }
+
+    fun shuffle(){
+        flashcards = flashcards.shuffled()
+        notifyDataSetChanged()
     }
 }
